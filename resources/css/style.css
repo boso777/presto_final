@@ -1,3 +1,7 @@
 .row-custom{
   min-height: 50vh;
 }
+
+.card-w{
+  width: 80%;
+}
