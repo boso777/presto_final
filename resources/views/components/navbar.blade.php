@@ -28,6 +28,9 @@
               @csrf
             </form>
           </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('create.article')}}">Create Article</a>
+          </li>
         </li>
         @endauth
       </ul>
