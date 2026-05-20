@@ -38,7 +38,6 @@
                     </div>
                     @endif
                 </div>
-                ...code
                 <div class="d-flex pb-4 justify-content-around">
                     <form action="{{ route('reject', $article_to_check) }}" method="POST">
                         @csrf

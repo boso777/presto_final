@@ -8,12 +8,9 @@ use Illuminate\Http\Request;
 class PublicController extends Controller
 {
     public function homepage(){
-        $articles = Article::take(6)->orderBy('created_at', 'desc')->get();
+        $articles = Article::where('is_accepted' , true)->orderBy('created_at', 'desc')->take(6)->get();
         return view('welcome' ,compact('articles'));
     }
 
-    public function index(){
-        $articles = Article::orderBy('created_at', 'desc')->paginate(6);
-        return view('article.index' ,compact('articles'));
-    }
+    
 }

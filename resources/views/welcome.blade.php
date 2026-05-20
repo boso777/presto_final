@@ -1,5 +1,15 @@
 <x-layout>
     <div class="row height-custom justify-content-center align-items-center py-5">
+        @if(session()->has('errorMessage'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{ session('errorMessage') }}
+        </div>
+        @endif
+        @if(session()->has('message'))
+        <div class="alert alert-success text-center" role="alert">
+            {{ session('message') }}
+        </div>
+        @endif
     @forelse ($articles as $article)
         <div class="col-12 col-md-3 ">
             <x-card :article="$article" />

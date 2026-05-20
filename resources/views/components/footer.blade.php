@@ -42,12 +42,15 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
+            <i class="fas fa-gem me-3">Presto.it</i>
           </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+          <p class="fw-bold">
+            Vuoi diventare un revisore?
           </p>
+          <p>
+            Cliccando il bottone sottostante farai richiesta al nostro admin
+          </p>
+          <a href="{{route('become.revisor')}}" class="btn btn-success">diventa revisore</a>
         </div>
         <!-- Grid column -->
 
