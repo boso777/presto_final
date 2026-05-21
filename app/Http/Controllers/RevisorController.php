@@ -19,15 +19,17 @@ class RevisorController extends Controller
     
     public function accept(Article $article)
     {
-        $article->setAccepted(true);
+        $article->is_accepted = true; 
+        $article->save();
         return redirect()
             ->back()
             ->with('message', "Hai accettato l'articolo $article->title");
     }
 
     public function reject(Article $article)
-    {
-        $article->setAccepted(false);
+    {   
+        $article->is_accepted = false;
+        $article->save();
         return redirect()
             ->back()
             ->with('message', "Hai rifiutato l'articolo $article->title");

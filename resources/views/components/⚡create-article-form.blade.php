@@ -20,6 +20,7 @@ new class extends Component
     public function save()
     {
         $this->validate();
+        
         $this->article = Article::create([
         'title' => $this->title,
         'description' => $this->description,

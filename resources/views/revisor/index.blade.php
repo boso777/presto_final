@@ -38,18 +38,21 @@
                     </div>
                     @endif
                 </div>
+                
                 <div class="d-flex pb-4 justify-content-around">
-                    <form action="{{ route('reject', $article_to_check) }}" method="POST">
+                    <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <button class="btn btn-danger py-2 px-5 fw-bold ">Rifiuta</button>
+                        <button type="submit" class="btn btn-danger py-2 px-5 fw-bold">Rifiuta</button>
                     </form>
-                    <form action="{{ route('accept',$article_to_check) }}" method="POST">
+                    
+                    <form action="{{ route('accept', ['article' => $article_to_check]) }}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <button class="btn btn-success py-2 px-5 fw-bold ">Accetta</button>
+                        <button type="submit" class="btn btn-success py-2 px-5 fw-bold">Accetta</button>
                     </form>
                 </div>
+                
             </div>
         </div>
         @else
