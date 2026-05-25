@@ -13,7 +13,6 @@ Route::get('create/article',[ArticleController::class , 'create'])->name('create
 Route::get('show/article/{article}',[ArticleController::class , 'show'])->name('article.show');
 Route::get('/category/{category}', [ArticleController::class, 'byCategory'])->name('byCategory');
 
-
 // revisor controller
 Route::get('revisor/index' , [RevisorController::class , 'index'])->name('revisor.index')->middleware('isRevisor');
 Route::patch('accept/{article}' , [RevisorController::class , 'accept'])->name('accept');
