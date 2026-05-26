@@ -35,6 +35,12 @@
                         @endforeach
                     </ul>
                 </li>
+                <form class="d-flex ms-auto" role="search" action="{{Route('article.search')}}" method="GET">
+                    <div class="input-group">
+                        <input name="query" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">Search</button>
+                    </div>
+                </form>
                 @auth
                     @if (Auth::user()->is_revisor)
                         <li class="nav-item">
