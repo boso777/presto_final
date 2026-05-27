@@ -24,3 +24,6 @@ Route::patch('reject/{article}' , [RevisorController::class , 'reject'])->name('
 Route::get('revisor/request' , [RevisorController::class , 'becomeRevisor'])->name('become.revisor')->middleware('auth');
 Route::get('make/revisor/{user}' , [RevisorController::class , 'makeRevisor'])->name('make.revisor');
 
+
+// cambio lingua
+Route::get('/lingua/{lang}',[PublicController::class , 'setLanguage'])->name('setLocale');
