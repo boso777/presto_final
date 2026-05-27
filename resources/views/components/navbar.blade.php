@@ -6,31 +6,29 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">{{ __('ui.Login') }}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('ui.Register') }}</a>
                     </li>
                 @endguest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('article.index') }}">All Articles</a>
+                    <a class="nav-link" href="{{ route('article.index') }}">{{ __('ui.allArticles') }}</a>
                 </li>
-                    <x-_locale lang="it" />
-                    <x-_locale lang="uk" />
-                    <x-_locale lang="es" />
+                    
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Categorie
+                        {{ __('ui.Categories')}}
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
                             <li><a class="dropdown-item text-capitalize"
-                                    href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->name }}</a>
+                                    href="{{ route('byCategory', ['category' => $category]) }}">{{ __('ui.' . $category->name) }}</a>
                             </li>
                             @if (!$loop->last)
                                 <hr class="dropdown-divider">
@@ -48,7 +46,7 @@
                     @if (Auth::user()->is_revisor)
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
-                                href="{{ route('revisor.index') }}">Zona revisore
+                                href="{{ route('revisor.index') }}">{{__('ui.zonaRevisore')}}
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     {{\App\Models\Article::toBeRevisedCount()}}
                                 </span>
@@ -58,7 +56,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Ciao, {{ Auth::user()->name }}
+                            {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -70,10 +68,13 @@
                             </form>
                         </ul>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('create.article') }}">Create Article</a>
+                        <a class="nav-link" href="{{ route('create.article') }}">{{__('ui.createArticle')}}</a>
                     </li>
                     </li>
                 @endauth
+                    <x-_locale lang="it" />
+                    <x-_locale lang="uk" />
+                    <x-_locale lang="es" />
             </ul>
 
         </div>

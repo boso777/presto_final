@@ -10,6 +10,7 @@
             {{ session('message') }}
         </div>
         @endif
+        <h1 class="text-center fs-1 my-4 ">{{ __('ui.welcome') }}</h1>
     @forelse ($articles as $article)
         <div class="col-12 col-md-3 ">
             <x-card :article="$article" />
