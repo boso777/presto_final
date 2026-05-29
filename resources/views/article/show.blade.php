@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row height-custom justify-content-center align-items-center text-center">
             <div class="col-12">
-                <h1 class="display-4">Dettaglio dell'articolo: {{ $article->title }}</h1>
+                <h1 class="display-4">Dettaglio dell'articolo:{{ $article->title }}</h1>
             </div>
         </div>
         <div class="row height-custom justify-content-center align-items-center py-5">
