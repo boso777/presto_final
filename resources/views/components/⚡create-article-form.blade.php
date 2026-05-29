@@ -10,9 +10,9 @@ use Livewire\WithFileUploads;
 
 new class extends Component
 {
-
+    
     use WithFileUploads;
-
+    
     #[Validate('required|min:5')]
     public $title;
     #[Validate('required|min:10')]
@@ -22,51 +22,56 @@ new class extends Component
     #[Validate('required')]
     public $category;
     public $article;
-
+    
     public $images = [];
     public $temporary_images;
-
-    public function updatedTemporaryImages(){
-        if($this->validate([
-            'temporary_images.*' => 'image|max:1024',
-            'temporary_images' => 'max:6'
-        ])){
-            foreach($this->temporary_images as $image){
-                $this->images[] = $image;
-            }
-        }
-    }
     
-
-    public function removeImage($key){
-    if (in_array($key, array_keys($this->images))){
-        unset($this->images[$key]);
-    }
-
-   }
-
-    public function save()
+    public function updatedTemporaryImages()
     {
-        $this->validate();
-        $this->article = Article::create([
-        'title' => $this->title,
-        'description' => $this->description,
-        'price' => $this->price,
-        'category_id' => $this->category,
-        'user_id' => Auth::id()
+        $this->validate([
+        'temporary_images.*' => 'image|max:1024',
+        'temporary_images' => 'max:6'
         ]);
         
-        if(count($this->images) > 0) {
-            foreach($this->images as $image) {
-                $this->article->images()->create(['path' => $image->store('images','public')]);
-            }
+        foreach($this->temporary_images as $image){
+            $this->images[] = $image;
         }
-
-        session()->flash('success', 'Articolo creato con successo');
-        $this->reset();
         
+        $this->temporary_images = []; 
     }
     
+    public function removeImage($key)
+    {
+        if (array_key_exists($key, $this->images)){
+            unset($this->images[$key]);
+            $this->images = array_values($this->images);
+        }
+    }
+    
+
+
+public function save()
+{
+    $this->validate();
+    $this->article = Article::create([
+    'title' => $this->title,
+    'description' => $this->description,
+    'price' => $this->price,
+    'category_id' => $this->category,
+    'user_id' => Auth::id()
+    ]);
+    
+    if(count($this->images) > 0) {
+        foreach($this->images as $image) {
+            $this->article->images()->create(['path' => $image->store('images','public')]);
+        }
+    }
+    
+    session()->flash('success', 'Articolo creato con successo');
+    $this->reset();
+    
+}
+
 };
 ?>
 
@@ -110,19 +115,19 @@ new class extends Component
             <p class="text-danger fst-italic">{{$message}}</p>
             @enderror
         </div>
-
+        
         {{-- gestione immagini --}}
-
+        
         <div class="mb-3">
             <input type="file" wire:model.live="temporary_images" multiple class="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="Img/">
             @error('temporary_images.*')
-                <p class="fst-italic text-danger">{{$message}}</p>
+            <p class="fst-italic text-danger">{{$message}}</p>
             @enderror
             @error('temporary_images')
-                <p class="fst-italic text-danger">{{$message}}</p>
+            <p class="fst-italic text-danger">{{$message}}</p>
             @enderror
         </div>
-
+        
         @if(!empty($images))
         <div class="row">
             <div class="col-12">
@@ -131,15 +136,15 @@ new class extends Component
                     @foreach ($images as $key => $image)
                     <div class="col d-flex flex-column align-items-center my-3">
                         <div class="img-preview mx-auto shadow rounded" style="background-image : url({{$image->temporaryUrl()}});"></div>
+                        <button type="button" class="btn mt-1 btn-danger" wire:click="removeImage({{$key}})">X</button>
                     </div>
-                    <button type="button" class="btn mt-1 btn-danger" wire:click="removeImage({{$key}})">X</button>
                     @endforeach
                 </div>
             </div>
         </div>
         @endif
-
-
+        
+        
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-dark">Crea</button>
         </div>
