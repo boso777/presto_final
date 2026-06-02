@@ -5,7 +5,8 @@ use App\Models\Article;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
-
+use Illuminate\Support\Facades\File;
+use App\Jobs\ResizeImage;
 
 
 new class extends Component
@@ -54,22 +55,22 @@ public function save()
 {
     $this->validate();
     $this->article = Article::create([
-    'title' => $this->title,
-    'description' => $this->description,
-    'price' => $this->price,
-    'category_id' => $this->category,
-    'user_id' => Auth::id()
+        'title' => $this->title,
+        'description' => $this->description,
+        'price' => $this->price,
+        'category_id' => $this->category,
+        'user_id' => Auth::id()
     ]);
-    
-    if(count($this->images) > 0) {
-        foreach($this->images as $image) {
-            $this->article->images()->create(['path' => $image->store('images','public')]);
+    if (count($this->images) > 0) {
+        foreach ($this->images as $image) {
+            $newFileName = "articles/{$this->article->id}";
+            $newImage = $this->article->images()->create(['path' => $image->store($newFileName, 'public')]);
+            dispatch(new ResizeImage($newImage->path, 300, 300));
         }
+        File::deleteDirectory(storage_path('/app/livewire-tmp'));
     }
-    
-    session()->flash('success', 'Articolo creato con successo');
+    session()->flash('success', 'Articolo creato correttamente');
     $this->reset();
-    
 }
 
 };

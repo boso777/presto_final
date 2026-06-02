@@ -15,9 +15,10 @@
                 <div class="row justify-content-center">
                     
                     @if($article_to_check->images->count())
-                    @foreach ($article_to_check->images as $key=>$image)
-                    <div class="col-6 col-md-4 mb-4">
-                        <img src="{{Storage::url($image->path)}}" class="img-fluid rounded shadow" alt="Image {{$key +1}} dell'articolo '{{$article_to_check->title}}">
+                    @foreach ($article_to_check->images as $key => $image)
+                    <div class="col-6 col-md-4 mb-4 text-center">
+                        <img src="{{ $image->getUrl(300, 300) }}" class="img-fluid rounded shadow"
+                        alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
                     </div>
                     @endforeach
                     @else
@@ -27,7 +28,7 @@
                     </div>
                     @endfor
                     @endif
-
+                    
                 </div>
             </div>
             <div class="col-md-4 ps-4 d-flex flex-column justify-content-between">
