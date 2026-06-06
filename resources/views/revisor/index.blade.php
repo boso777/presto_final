@@ -14,13 +14,56 @@
             <div class="col-md-8">
                 <div class="row justify-content-center">
                     
-                    @if($article_to_check->images->count())
+                    @if($article_to_check->images->count() > 0)
                     @foreach ($article_to_check->images as $key => $image)
-                    <div class="col-6 col-md-4 mb-4 text-center">
-                        <img src="{{ $image->getUrl(300, 300) }}" class="img-fluid rounded shadow"
-                        alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
+    <div class="col-6">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ $image->getUrl(300, 300) }}"
+                        class="img-fluid rounded-start"
+                        alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'"
+                    >
+                </div>
+                <div class="col-md-8 ps-3">
+                    <div class="card-body">
+                        <h5>Ratings</h5>
+                        <div class="row justify-content-center">
+                            <div class="col-2 text-center">
+                                <i class="{{ $image->adult }}"></i>
+                            </div>
+                            <div class="col-10">adult</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2 text-center">
+                                <i class="{{ $image->violence }}"></i>
+                            </div>
+                            <div class="col-10">violence</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2 text-center">
+                                <i class="{{ $image->spoof }}"></i>
+                            </div>
+                            <div class="col-10">spoof</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2 text-center">
+                                <i class="{{ $image->racy }}"></i>
+                            </div>
+                            <div class="col-10">racy</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-2 text-center">
+                                <i class="{{ $image->medical }}"></i>
+                            </div>
+                            <div class="col-10">medical</div>
+                        </div>
                     </div>
-                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
                     @else
                     @for($i = 0 ; $i < 6; $i++)
                     <div class="col-6 col-md-4 mb-4 text-center">
