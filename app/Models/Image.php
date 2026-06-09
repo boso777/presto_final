@@ -22,6 +22,13 @@ class Image extends Model
         return $this->belongsTo(Article::class);
     }
 
+    protected function casts(): array
+    {
+        return [
+            'labels' => 'array',
+        ];
+    }
+
     public static function getUrlByFilePath($filePath, $w = null, $h = null)
     {
         if (!$w && !$h) {
