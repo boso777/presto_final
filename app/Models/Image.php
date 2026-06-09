@@ -37,8 +37,13 @@ class Image extends Model
         $path = dirname($filePath);
         $filename = basename($filePath);
         $file = "{$path}/crop_{$w}x{$h}_{$filename}";
-        return Storage::url($file);
+        
+        if (Storage::disk('public')->exists($file)) {
+            return Storage::url($file);
         }
+
+        return Storage::url($filePath);
+    }
 
     public function getUrl($w = null, $h = null)
     {
@@ -46,4 +51,3 @@ class Image extends Model
     }
 
     }
-

@@ -1,93 +1,24 @@
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    <!-- Left -->
-
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
-
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3">Presto.it</i>
-          </h6>
-          <p class="fw-bold">
-            {{ __('ui.askRevisor')}}
-          </p>
-          <p>
-            {{__('ui.textRevisor')}}
-          </p>
-          <a href="{{route('become.revisor')}}" class="btn btn-success">
-            {{__('ui.buttonRevisor')}}
-          </a>
+<footer class="bg-alt text-muted mt-5 py-5 border-top" style="background-color: var(--color-bg-alt);">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                <h4 class="fw-bold text-primary mb-1 text-uppercase">Presto</h4>
+                <p class="small mb-0 text-lowercase">Minimalist curated marketplace.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <a href="{{ route('revisor.become') }}" class="btn btn-outline-primary btn-sm px-4">
+                    {{ __('ui.buttonRevisor') }}
+                </a>
+            </div>
         </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            info@example.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        <hr class="my-4 opacity-25">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small">
+            <p class="mb-2 mb-md-0">&copy; 2026 Presto.it. all rights reserved.</p>
+            <div class="d-flex gap-4">
+                <a href="#" class="text-reset text-decoration-none">Privacy</a>
+                <a href="#" class="text-reset text-decoration-none">Terms</a>
+                <a href="#" class="text-reset text-decoration-none">Contact</a>
+            </div>
         </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
     </div>
-  </section>
-  <!-- Section: Links  -->
-
-  <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2026 Copyright:
-    <a class="text-reset fw-bold" href="#">Boso</a>
-  </div>
-  <!-- Copyright -->
 </footer>
-<!-- Footer -->

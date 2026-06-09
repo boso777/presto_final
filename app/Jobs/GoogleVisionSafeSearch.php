@@ -68,12 +68,7 @@ class GoogleVisionSafeSearch implements ShouldQueue
         $racy = $safeSearchAnnotation->getRacy();
 
         $likeliHoodName = [
-            'text-secondary bi bi-circle-fill',
-            'text-success bi bi-check-circle-fill',
-            'text-success bi bi-check-circle-fill',
-            'text-warning bi bi-exclamation-circle-fill',
-            'text-warning bi bi-exclamation-circle-fill',
-            'text-danger bi bi-dash-circle-fill'
+            'UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE', 'LIKELY', 'VERY_LIKELY'
         ];
 
         $i->adult = $likeliHoodName[$adult];

@@ -1,136 +1,92 @@
 <x-layout>
-    <div class="container-fluid pt-5">
-        <div class="row">
-            <div class="col-3">
-                <div class="rounded shadow bg-body-secondary">
-                    <h1 class="display-5 text-center pb-2">
-                        Revisor dashboard
-                    </h1>
-                </div>
-            </div>
+    <div class="container section-padding">
+        <div class="mb-5 pb-5">
+            <h1 class="display-3 fw-bold text-lowercase mb-3">dashboard revisore</h1>
+            <p class="lead text-muted">revisiona gli articoli in attesa di approvazione.</p>
         </div>
+
         @if ($article_to_check)
-        <div class="row justify-content-center pt-5">
-            <div class="col-md-8">
-                <div class="row justify-content-center">
-                    
-                    @if($article_to_check->images->count() > 0)
-                    @foreach ($article_to_check->images as $key=>$image)
-                    <div class="col-col-6">
-                        <div class="card mb-3 ">
-                            <div class="row g-0 ">
-                                <div class="col-md-4">
-                                    <img src="{{ $image->getUrl(300, 300) }}"
-                                    class="img-fluid rounded-start" alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'"
-                                    >
-                                </div>
-                                <div class="col-md-5 ps-3 ">
-                                    <div class="card-body">
-                                        <h5>Labels</h5>
-                                        @if ($image->labels)
-                                        @foreach ($image->labels as $label)
-                                        #{{ $label }},
-                                        @endforeach
-                                        @else
-                                        <p class="fst-italic">No labels</p>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card-body ">
-                                        <h5>Ratings</h5>
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <div class="text-center mx-auto {{ $image->adult }}">
-                                                </div>
+            <div class="row g-5">
+                <!-- Article Preview -->
+                <div class="col-12 col-lg-7">
+                    @if ($article_to_check->images->count() > 0)
+                        <div id="revisorCarousel" class="carousel slide shadow-sm mb-4">
+                            <div class="carousel-inner">
+                                @foreach ($article_to_check->images as $key => $image)
+                                    <div class="carousel-item @if ($loop->first) active @endif">
+                                        <div class="row align-items-center bg-alt p-3" style="background-color: var(--color-bg-alt);">
+                                            <div class="col-12 col-md-8">
+                                                <img src="{{ $image->getUrl(600, 600) }}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="">
                                             </div>
-                                            <div class="col-10">adult</div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <div class="text-center mx-auto {{ $image->violence }}">
-                                                </div>
+                                            <div class="col-12 col-md-4 small">
+                                                <h6 class="fw-bold text-uppercase mb-3">analisi ai</h6>
+                                                <div class="mb-2">adult: <span class="badge @if($image->adult == 'VERY_UNLIKELY') bg-success @else bg-danger @endif">{{ $image->adult }}</span></div>
+                                                <div class="mb-2">spoof: <span class="badge @if($image->spoof == 'VERY_UNLIKELY') bg-success @else bg-danger @endif">{{ $image->spoof }}</span></div>
+                                                <div class="mb-2">medical: <span class="badge @if($image->medical == 'VERY_UNLIKELY') bg-success @else bg-danger @endif">{{ $image->medical }}</span></div>
+                                                <div class="mb-2">violence: <span class="badge @if($image->violence == 'VERY_UNLIKELY') bg-success @else bg-danger @endif">{{ $image->violence }}</span></div>
+                                                <div class="mb-4">racy: <span class="badge @if($image->racy == 'VERY_UNLIKELY') bg-success @else bg-danger @endif">{{ $image->racy }}</span></div>
+                                                
+                                                <h6 class="fw-bold text-uppercase mb-2">labels</h6>
+                                                @if($image->labels)
+                                                    @foreach($image->labels as $label)
+                                                        <span class="text-muted">#{{ $label }} </span>
+                                                    @endforeach
+                                                @endif
                                             </div>
-                                            <div class="col-10">violence</div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <div class="text-center mx-auto {{ $image->spoof }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-10">spoof</div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <div class="text-center mx-auto {{ $image->racy }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-10">racy</div>
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <div class="text-center mx-auto {{ $image->medical }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-10">medical</div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
+                            @if ($article_to_check->images->count() > 1)
+                                <button class="carousel-control-prev" type="button" data-bs-target="#revisorCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#revisorCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                            @endif
                         </div>
-                    </div>
-                    @endforeach
                     @else
-                    @for($i = 0 ; $i < 6; $i++)
-                    <div class="col-6 col-md-4 mb-4 text-center">
-                        <img src="https://picsum.photos/300" alt="immagine segnaposto" class="img-fluid rounded shadow">
-                    </div>
-                    @endfor
+                        <div class="bg-alt d-flex align-items-center justify-content-center shadow-sm mb-4" style="height: 400px; background-color: var(--color-bg-alt);">
+                            <p class="text-muted">nessuna immagine fornita</p>
+                        </div>
                     @endif
-                    
                 </div>
-            </div>
-            <div class="col-md-4 ps-4 d-flex flex-column justify-content-between">
-                <div>
-                    <h1>{{ $article_to_check->title }}</h1>
-                    <h3>Autore: {{ $article_to_check->user->name }}</h3>
-                    <h4>{{ $article_to_check->price }}€</h4>
-                    <h4 class="fst-italic text-muted">#{{ $article_to_check->category->name }}</h4>
-                    <p class="h6">{{ $article_to_check->description }}</p>
-                    @if (session()->has('message'))
-                    <div class="row justify-content-center">
-                        <div class="col-5 alert alert-success text-center shadow rounded">
-                            {{ session('message') }}
+
+                <!-- Article Info & Actions -->
+                <div class="col-12 col-lg-5">
+                    <div class="bg-white p-5 shadow-sm h-100" style="border: 1px solid var(--color-bg-soft);">
+                        <div class="mb-4">
+                            <span class="text-primary small text-uppercase fw-bold">{{ $article_to_check->category->name }}</span>
+                            <h2 class="display-6 fw-bold text-lowercase mt-1">{{ $article_to_check->title }}</h2>
+                            <p class="h4 color-primary fw-bold" style="color: var(--color-primary);">{{ $article_to_check->price }} €</p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h6 class="text-uppercase fw-bold small text-muted mb-2">descrizione</h6>
+                            <p class="text-muted">{{ $article_to_check->description }}</p>
+                        </div>
+
+                        <div class="d-flex gap-3 pt-4 border-top">
+                            <form action="{{ route('revisor.accept', ['article' => $article_to_check]) }}" method="POST" class="flex-grow-1">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-success w-100 py-3 text-white border-0" style="background-color: #a5a58d !important; border-radius: 0 !important;">approva</button>
+                            </form>
+                            <form action="{{ route('revisor.reject', ['article' => $article_to_check]) }}" method="POST" class="flex-grow-1">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-danger w-100 py-3 text-white border-0" style="background-color: #cb997e !important; border-radius: 0 !important;">rifiuta</button>
+                            </form>
                         </div>
                     </div>
-                    @endif
                 </div>
-                
-                <div class="d-flex pb-4 justify-content-around">
-                    <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-danger py-2 px-5 fw-bold">Rifiuta</button>
-                    </form>
-                    
-                    <form action="{{ route('accept', ['article' => $article_to_check]) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-success py-2 px-5 fw-bold">Accetta</button>
-                    </form>
-                </div>
-                
             </div>
-        </div>
         @else
-        <div class="row justify-content-center align-items-center height-custom text-center">
-            <div class="col-12">
-                <h1 class="fst-italic display-4">
-                    Nessun articolo da revisionare
-                </h1>
-                <a href="{{ route('homepage') }}" class="mt-5 btn btn-success">Torna all'homepage</a>
+            <div class="text-center py-5 mt-5">
+                <h2 class="text-muted fw-light mb-4 text-lowercase">non ci sono articoli da revisionare.</h2>
+                <a href="{{ route('homepage') }}" class="btn btn-outline-primary px-5 py-3">torna alla home</a>
             </div>
-        </div>
         @endif
     </div>
 </x-layout>
