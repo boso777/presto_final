@@ -1,27 +1,25 @@
-
-    <x-layout>
-    <div class="container-fluid ">
-        <div class="row height-custom justify-content-center align-items-center text-center">
-            <div class="col-12">
-                <h1 class="display-1 ">Tutti gli articoli</h1>
-            </div>
+<x-layout>
+    <div class="container section-padding">
+        <div class="mb-5 pb-5">
+            <h1 class="display-3 fw-bold text-lowercase mb-3">tutti gli articoli</h1>
+            <p class="lead text-muted">sfoglia la nostra selezione curata di articoli essenziali.</p>
         </div>
-        <div class="row height-custom justify-content-center align-items-center py-5">
+
+        <div class="row g-4">
             @forelse ($articles as $article)
-                <div class="col-12 col-md-3 ">
+                <div class="col-12 col-md-6 col-lg-3">
                     <x-card :article="$article" />
                 </div>
             @empty
-                <div class="col-12">
-                    <h3 class="text-center">
-                        Non sono ancora stati creati articoli
+                <div class="col-12 text-center py-5">
+                    <h3 class="text-muted fw-light">
+                        {{ __('ui.noArticles') ?? 'non sono ancora stati creati articoli' }}
                     </h3>
                 </div>
             @endforelse
         </div>
-    </div>
-    <div class="d-flex justify-content-center">
-        <div>
+
+        <div class="d-flex justify-content-center mt-5 pt-5">
             {{ $articles->links() }}
         </div>
     </div>
