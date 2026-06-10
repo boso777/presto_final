@@ -22,5 +22,6 @@ return
         'Sport' => 'Sport',
         'createArticle' => 'Crea Articolo',
         'detail' => 'Dettaglio',
-        'zonaRevisore'=> 'Zona revisore'
+        'zonaRevisore'=> 'Zona revisore',
+        'home' => 'Tutto quello di cui hai bisogno!'
     ];

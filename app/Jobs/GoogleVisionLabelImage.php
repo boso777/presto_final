@@ -31,6 +31,7 @@ class GoogleVisionLabelImage implements ShouldQueue
      */
     public function handle(): void
     {
+
         $i = Image::find($this->article_image_id);
         if (!$i) {
             return;

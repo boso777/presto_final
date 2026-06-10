@@ -27,3 +27,4 @@ Homestead.yaml
 Thumbs.db
 /storage/*.index
 google_credential_aprile2026.json
+.aider*

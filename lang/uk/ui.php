@@ -22,5 +22,6 @@ return
         'Sport' => 'Sport',
         'createArticle' => 'Create Article',
         'detail' => 'Show more',
-        'zonaRevisore'=> 'Reviewer Area'
+        'zonaRevisore'=> 'Reviewer Area',
+        'home' => 'Everything you need!'
     ];

@@ -3,7 +3,7 @@
     <header class="hero-section">
         <div class="container text-center">
             <h1 class="hero-title display-1 mb-0">Presto</h1>
-            <p class="lead text-muted text-lowercase mb-5">Minimalist marketplace for your essentials.</p>
+            <p class="lead text-muted text-lowercase mb-5">{{ __('ui.home') }}</p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="{{ route('article.index') }}" class="btn btn-primary px-5">{{ __('ui.allArticles') }}</a>
                 @guest
