@@ -2,7 +2,7 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 [![Livewire](https://img.shields.io/badge/Livewire-4.x-FB70A9?style=for-the-badge&logo=livewire)](https://livewire.laravel.com)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
 [![Google Cloud Vision](https://img.shields.io/badge/Google_Cloud_Vision-API-4285F4?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/vision)
 
 Presto.it is a high-performance, feature-rich multi-language marketplace platform. It allows users to post classified ads, manage articles, and features a sophisticated content moderation (Revisor) system powered by AI-driven image analysis.
@@ -11,15 +11,16 @@ Presto.it is a high-performance, feature-rich multi-language marketplace platfor
 
 ## 🚀 Key Features
 
-- **Multi-language Support:** Full localization in English, Spanish, Italian, and Ukrainian.
+- **Multi-language Support:** Full localization in English, Spanish, and Italian.
 - **AI Content Moderation:** Integrated with **Google Cloud Vision API** for:
     - **Safe Search:** Automatically detects adult content, violence, and medical/racy images.
     - **Image Labeling:** Automated categorization and tagging based on image content.
     - **Face Detection:** Smart image processing to identify and handle human faces.
 - **Revisor Dashboard:** A dedicated workflow for moderators to review, accept, or reject pending articles.
 - **Full-Text Search:** High-speed searching using **Laravel Scout** with **TNTSearch**.
-- **Responsive Design:** Modern UI built with **Tailwind CSS 4** and **Livewire** for a seamless, SPA-like experience.
+- **Responsive Design:** Modern UI built with **Bootstrap 5** and **Livewire** for a seamless, SPA-like experience.
 - **Secure Authentication:** Robust user management system powered by **Laravel Fortify**.
+- **Asynchronous Workflows:** Heavy tasks like image resizing and AI analysis are offloaded to **Laravel Jobs** for a faster user experience.
 
 ---
 
@@ -29,11 +30,11 @@ Presto.it is a high-performance, feature-rich multi-language marketplace platfor
 - **Framework:** Laravel 12.x
 - **Search Engine:** Laravel Scout + TNTSearch
 - **Authentication:** Laravel Fortify
-- **Task Scheduling & Queues:** Handled for heavy image processing tasks (Resizing, AI analysis).
+- **Task Scheduling & Queues:** Laravel Jobs & Queues (Redis/Database) for asynchronous processing.
 
 ### Frontend
 - **Reactivity:** Livewire 4.x
-- **Styling:** Tailwind CSS 4.x & Custom Minimalist CSS (Vanilla)
+- **Styling:** Bootstrap 5 & Custom Minimalist CSS (Vanilla)
 - **Design:** Architectural "Square" aesthetics with 0px border-radius.
 - **Typography:** Inter (Google Fonts)
 - **Asset Bundling:** Vite 8.0
@@ -89,7 +90,13 @@ The platform follows a **Modern Minimalist** approach:
    php artisan migrate --seed
    ```
 
-5. **Start the application:**
+5. **Start the Queues:**
+   To process background jobs (images, AI), run:
+   ```bash
+   php artisan queue:work
+   ```
+
+6. **Start the application:**
    ```bash
    npm run dev
    # In another terminal
@@ -100,7 +107,7 @@ The platform follows a **Modern Minimalist** approach:
 
 ## 👨‍💻 Developed by
 
-**[Your Name]**  
+**Roberto Ingrao**  
 *Full Stack Web Developer*
 
 Dedicated to building scalable, user-centric applications with the latest technologies. This project demonstrates proficiency in Laravel ecosystem, AI integration, and modern frontend workflows.

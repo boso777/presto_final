@@ -36,3 +36,7 @@ L'obiettivo è stato quello di trasformare l'interfaccia da una struttura Bootst
 ## Note Tecniche
 *   Tutti i colori e i parametri base sono definiti come **CSS Variables** in `resources/css/style.css` per una facile manutenzione futura.
 *   Utilizzo di utilità Bootstrap 5 mantenendo però lo stile personalizzato tramite override globali.
+
+---
+**Sviluppato da:** Roberto Ingrao
+
