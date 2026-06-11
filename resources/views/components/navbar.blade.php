@@ -77,7 +77,7 @@
                 
                 <li class="nav-item d-flex align-items-center ms-lg-3 text-nowrap">
                     <x-_locale lang="it" />
-                    <x-_locale lang="en" />
+                    <x-_locale lang="uk" />
                     <x-_locale lang="es" />
                 </li>
             </ul>
