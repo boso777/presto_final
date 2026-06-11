@@ -1,58 +1,110 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Presto.it - Advanced E-commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![Livewire](https://img.shields.io/badge/Livewire-4.x-FB70A9?style=for-the-badge&logo=livewire)](https://livewire.laravel.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Google Cloud Vision](https://img.shields.io/badge/Google_Cloud_Vision-API-4285F4?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/vision)
 
-## About Laravel
+Presto.it is a high-performance, feature-rich multi-language marketplace platform. It allows users to post classified ads, manage articles, and features a sophisticated content moderation (Revisor) system powered by AI-driven image analysis.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Multi-language Support:** Full localization in English, Spanish, Italian, and Ukrainian.
+- **AI Content Moderation:** Integrated with **Google Cloud Vision API** for:
+    - **Safe Search:** Automatically detects adult content, violence, and medical/racy images.
+    - **Image Labeling:** Automated categorization and tagging based on image content.
+    - **Face Detection:** Smart image processing to identify and handle human faces.
+- **Revisor Dashboard:** A dedicated workflow for moderators to review, accept, or reject pending articles.
+- **Full-Text Search:** High-speed searching using **Laravel Scout** with **TNTSearch**.
+- **Responsive Design:** Modern UI built with **Tailwind CSS 4** and **Livewire** for a seamless, SPA-like experience.
+- **Secure Authentication:** Robust user management system powered by **Laravel Fortify**.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠 Technical Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Backend
+- **Framework:** Laravel 12.x
+- **Search Engine:** Laravel Scout + TNTSearch
+- **Authentication:** Laravel Fortify
+- **Task Scheduling & Queues:** Handled for heavy image processing tasks (Resizing, AI analysis).
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Frontend
+- **Reactivity:** Livewire 4.x
+- **Styling:** Tailwind CSS 4.x & Custom Minimalist CSS (Vanilla)
+- **Design:** Architectural "Square" aesthetics with 0px border-radius.
+- **Typography:** Inter (Google Fonts)
+- **Asset Bundling:** Vite 8.0
 
-## Agentic Development
+### APIs & Services
+- **Image Intelligence:** Google Cloud Vision API
+- **Image Manipulation:** Spatie Image (Resizing, Watermarking, Filtering)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🎨 Design Philosophy
 
-php artisan boost:install
-```
+The platform follows a **Modern Minimalist** approach:
+- **Clean Aesthetics:** "Squared-off" UI (0px border-radius) for an architectural and professional look.
+- **Premium Palette:** A carefully curated selection of warm neutrals (#CB997E, #FFF1E6, #EDDCD2) that provide a high-end feel.
+- **White Space:** Heavy emphasis on spacing and typography hierarchy to ensure an intuitive and clutter-free user experience.
+- **UI Consistency:** Custom CSS variables define the global theme, ensuring a seamless look across all components.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 🏗 Architectural Highlights
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Asynchronous Processing:** Utilizes Laravel Jobs to process image optimizations and AI checks in the background, ensuring zero latency for the end-user.
+- **Custom Middleware:** Secure access control for the Revisor role via `IsRevisor` middleware.
+- **Eloquent Relationships:** Complex data structures managed through clean, optimized ORM relationships.
+- **Blade Components:** Modular and reusable UI components for consistent design.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📦 Installation & Setup
 
-## Security Vulnerabilities
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/presto-final.git
+   cd presto-final
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-## License
+3. **Environment Setup:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Note: Configure your database and Google Cloud Vision API keys in the `.env` file.*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Run Migrations & Seeders:**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Start the application:**
+   ```bash
+   npm run dev
+   # In another terminal
+   php artisan serve
+   ```
+
+---
+
+## 👨‍💻 Developed by
+
+**[Your Name]**  
+*Full Stack Web Developer*
+
+Dedicated to building scalable, user-centric applications with the latest technologies. This project demonstrates proficiency in Laravel ecosystem, AI integration, and modern frontend workflows.
+
+---
+
+*This project was developed as a showcase for technical skills in full-stack development, specifically focusing on the Laravel framework and third-party API integrations.*
