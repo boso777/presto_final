@@ -1,8 +1,8 @@
 <x-layout>
     <div class="container section-padding">
         <div class="mb-5 pb-5">
-            <h1 class="display-3 fw-bold text-lowercase mb-3">dashboard revisore</h1>
-            <p class="lead text-muted">revisiona gli articoli in attesa di approvazione.</p>
+            <h1 class="display-3 fw-bold text-lowercase mb-3 mx-2">dashboard revisore</h1>
+            <p class="lead text-muted mx-2">revisiona gli articoli in attesa di approvazione.</p>
         </div>
 
         @if ($article_to_check)
