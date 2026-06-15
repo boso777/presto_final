@@ -140,3 +140,8 @@ body {
   width: 120px;
   border: 1px solid var(--color-bg-soft);
 }
+
+
+.bg-custom{
+  background-color: var(--color-bg-soft);
+}

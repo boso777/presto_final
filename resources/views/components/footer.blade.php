@@ -1,8 +1,8 @@
-<footer class="bg-alt text-muted mt-5 py-5 border-top" style="background-color: var(--color-bg-alt);">
+<footer class="bg-custom text-muted mt-5 py-5 border-top" >
     <div class="container py-4">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-                <h4 class="fw-bold text-primary mb-1 text-uppercase">Presto</h4>
+                <h4 class="fw-bold text-secondary mb-1 text-uppercase">Presto</h4>
                 <p class="small mb-0 text-lowercase">Minimalist curated marketplace.</p>
             </div>
             <div class="col-md-6 text-center text-md-end">
