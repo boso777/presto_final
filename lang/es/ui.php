@@ -23,5 +23,6 @@ return
         'createArticle' => 'Crea artículos',
         'detail' => 'Ver detalle',
         'zonaRevisore'=> 'Area Revisor',
-        'home' => '¡Todo lo que necesitas!'
+        'home' => '¡Todo lo que necesitas!',
+        'noArticles' => '¡No hay nada aquí!'
     ];

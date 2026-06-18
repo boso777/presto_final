@@ -102,9 +102,28 @@ body {
 }
 
 .hero-section {
-  background-color: var(--color-bg-soft);
-  padding: 8rem 0;
-  margin-bottom: 3rem;
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  overflow: hidden;
+  /* Strato base: gradiente lineare diagonale */
+  background:
+    radial-gradient(ellipse at 25% 30%, #fff1e6 0%, #eddcd2 40%, transparent 70%),
+    radial-gradient(ellipse at 80% 80%, #f0efeb 0%, transparent 50%),
+    linear-gradient(135deg, #fff1e6 0%, #eddcd2 35%, #cb997e 100%);
+    padding: 8rem 0;
+    margin-bottom: 3rem;
+}
+
+.hero-section::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
 .hero-title {

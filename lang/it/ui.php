@@ -23,5 +23,6 @@ return
         'createArticle' => 'Crea Articolo',
         'detail' => 'Dettaglio',
         'zonaRevisore'=> 'Zona revisore',
-        'home' => 'Tutto quello di cui hai bisogno!'
+        'home' => 'Tutto quello di cui hai bisogno!',
+        'noArticles' => "Nessun articolo è stato creato!"
     ];

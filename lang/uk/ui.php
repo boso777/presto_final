@@ -23,5 +23,6 @@ return
         'createArticle' => 'Create Article',
         'detail' => 'Detail',
         'zonaRevisore'=> 'Reviewer Dashboard',
-        'home' => 'Everything you need!'
+        'home' => 'Everything you need!',
+        'noArticles' => 'There is nothing here!'
     ];
